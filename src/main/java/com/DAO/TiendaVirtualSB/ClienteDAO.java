@@ -1,6 +1,7 @@
 package com.DAO.TiendaVirtualSB;
 
 import java.sql.PreparedStatement;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,7 +25,15 @@ public class ClienteDAO
   */
 	
 	
- public void registrarPersona(ClienteVO persona) 
+ 
+	
+	
+public void ingresarCliente() {
+	
+}
+	
+	
+	public void registrarPersona(ClienteVO persona) 
  {
   Conexion conex= new Conexion();
   try {
