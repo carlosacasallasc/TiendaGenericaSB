@@ -9,9 +9,9 @@ import java.sql.*;
  */
 public class Conexion {
    /**Parametros de conexion*/
-   static String bd = "tienda";
+   static String bd = "tienda_generica_grp_fullstack";
    static String login = "root";
-   static String password = "admin";
+   static String password = "Desarrollo2020**";
    static String url = "jdbc:mysql://localhost/"+bd;
 
    Connection connection = null;
