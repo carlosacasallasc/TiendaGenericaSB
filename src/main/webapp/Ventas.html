@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Gestión Ventas</title>
+<link rel="stylesheet" href="Estilos.css">
+</head>
+<body>
+<p style="font-size:50px;">Gestión de Ventas</p>
+<br>
+<br>
+	<form action="/action_page.php">
+	
+		<table style="width:100%">
+			<tr>
+				<td><label for="fname">Cédula </label><br></td>
+				<td><input maxlength="12" type="text" id="cedula" name="cedula" required="required"><br></td>
+				<td><button class="boton_personalizado">Consultar</button></td>
+				<td><label for="fname">Cliente </label><br></td>
+				<td><input type="text" id="cliente" name="cliente" readonly="readonly" disabled="disabled"><br></td>
+				<td><label for="fname">Consec. </label><br></td>
+				<td><input type="text" id="consec" name="consec" readonly="readonly" disabled="disabled"><br><br></td>
+			</tr>
+		</table>
+		
+		<table style="width:100%">
+			<tr>
+				<td><label for="fname">Codigo Producto </label><br></td>
+				<td></td>
+				<td><label for="fname">Nombre Producto </label><br></td>
+				<td><label for="fname">Cantidad</label><br></td>
+				<td><label for="fname">Valor Total</label><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="codProducto" name="codProducto"><br></td>
+				<td><button class="boton_personalizado">Consultar</button></td>
+				<td><input type="text" id="nombProducto" name="nombProducto"><br></td>
+				<td><input class="inputCantidad" type="text" id="cantidad" name="cantidad"><br></td>
+				<td><input type="text" id="valorTotal" name="valorTotal"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="codProducto1" name="codProducto1"><br></td>
+				<td><button class="boton_personalizado">Consultar</button></td>
+				<td><input type="text" id="nombProducto1" name="nombProducto1"><br></td>
+				<td><input class="inputCantidad" type="text" id="cantidad1" name="cantidad1"><br></td>
+				<td><input type="text" id="valorTotal1" name="valorTotal1"><br></td>
+			</tr>
+			
+			<tr>
+				<td><input type="text" id="codProducto2" name="codProducto2"><br></td>
+				<td><button class="boton_personalizado">Consultar</button></td>
+				<td><input type="text" id="nombProducto2" name="nombProducto2"><br></td>
+				<td><input class="inputCantidad" type="text" id="cantidad2" name="cantidad2"><br></td>
+				<td><input type="text" id="valorTotal2" name="valorTotal2"><br></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><label for="fname">Total Venta</label><br></td>
+				<td><input type="text" id="totalVenta" name="totalVenta"><br></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><label for="fname">Total Iva</label><br></td>
+				<td><input type="text" id="totalIva" name="totalIva"><br></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><button class="boton_personalizado">Confirmar</button></td>
+				<td><label for="fname">Total Con Iva</label><br></td>
+				<td><input type="text" id="totalConIva" name="totalConIva"><br></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
