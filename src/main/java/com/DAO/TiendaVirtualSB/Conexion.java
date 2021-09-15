@@ -11,7 +11,7 @@ public class Conexion {
    /**Parametros de conexion*/
    static String bd = "tienda_generica_grp_fullstack";
    static String login = "root";
-   static String password = "Desarrollo2020**";
+   static String password = "Admin00";
    static String url = "jdbc:mysql://localhost/"+bd;
 
    Connection connection = null;
