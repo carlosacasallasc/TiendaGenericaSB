@@ -1,20 +1,30 @@
 package com.BO.TiendaVirtualSB;
 
+import java.io.IOException;
 import java.util.ArrayList;
-/*import java.util.HashMap;*/
-
-/*import org.springframework.boot.json.GsonJsonParser;*/
-/*import org.springframework.boot.json.JsonParser;*/
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.DAO.TiendaVirtualSB.UsuarioDAO;
-/*import com.fasterxml.jackson.databind.JsonNode;*/
-import com.DTO.TiendaVirtualSB.UsuariosDTO;
+import com.DAO.TiendaVirtualSB.*;
+import com.DTO.TiendaVirtualSB.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 
 @RestController
-public class UsuarioController {
+public class UsuarioController extends HttpServlet{
+	
+	LoginDAO login = new LoginDAO();
+	UsuariosDTO usu = new UsuariosDTO();
+	int r = 0;
+	
+	@RequestMapping("/iniciarLogin")
+	public int validarLogin(UsuariosDTO usuario){
+		r = login.IniciarLogin(usuario);
+		return r;
+	}
 	
 	
 	@RequestMapping("/registrarPersona")

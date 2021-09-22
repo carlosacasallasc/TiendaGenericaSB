@@ -18,7 +18,6 @@
     var saveme =  $.ajax({
         type: "POST",
         url: "http://localhost:8080/listarPersonas", //nombre del archivo php que consultaremos.
-      
         success: function(data) {
           $.each(data, function(i, item) {
           lista = document.getElementById("myTable");

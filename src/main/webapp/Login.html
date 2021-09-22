@@ -13,23 +13,27 @@
     <center style="font-size:30px;">Bienvenidos a la Tienda Genérica</center>
     <br>
     <br>
+    
+    <form action="Login.jsp" method="post">
     <center style="font-size:20px;">
-        <table cellspacing = 15>
+        <table >
             <tr>
                 <td>Usuario</td>
-                <td><input type="text" id="user" name="user"></td>
+                <td><input class="form-control" type="text" id="user" name="user"></td>
             </tr>
             <tr>
                 <td>Contraseña</td>
-                <td><input type="text" id="password" name="password"></td>
+                <td><input class="form-control" type="password" id="password" name="password"></td>
             </tr>
         </table>
         <br>
 
-        <td><input type="button" name="Aceptar" value="Aceptar" 
+        <td><input type="submit" name="Aceptar" value="Aceptar" 
             style="font-size : 15px; height:35px; width:100px; background-color: silver; color:white; border-radius: 8%;" /></td>
         <td ><input type="button" name="Cancelar" value="Cancelar" 
             style="font-size : 15px; height:35px; width:100px; background-color: silver; color:white; border-radius: 8%;" /></td>
     </center>
+    
+    </form>
 
 </body>
