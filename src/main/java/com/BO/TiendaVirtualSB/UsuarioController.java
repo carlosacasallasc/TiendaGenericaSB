@@ -71,6 +71,14 @@ public class UsuarioController extends HttpServlet{
 		return Dao.listaDePersonas();
 		
 	}
-
+	
+	
+	@RequestMapping("/crearCliente")
+	public void crearCliente(ClienteDTO cliente) {
+		ClienteDAO Dao=new ClienteDAO(); 
+		Dao.crearCliente(cliente);
+		
+		
+	}
 
 }

@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import com.BO.TiendaVirtualSB.*;
+import com.DTO.TiendaVirtualSB.ClienteDTO;
 import com.DTO.TiendaVirtualSB.ClienteVO;
 
 
@@ -116,5 +117,27 @@ public ArrayList< ClienteVO> listaDePersonas() {
   }
   return miCliente;
  }
+
+public void crearCliente(ClienteDTO cliente){
+	Conexion conex= new Conexion();
+	String sql="";
+	
+	try {
+		
+		Statement estatuto = conex.getConnection().createStatement();
+		   sql="INSERT INTO clientes VALUES ('"+cliente.getCedulaCliente()+"', '"
+				     +cliente.getDireccionCliente()+"', '"+cliente.getEmailCliente()+"', '"+cliente.getNombreCliente()+"', '"+cliente.getTelefonoCliente()+"')";
+				     
+		   estatuto.executeUpdate(sql);
+		   System.out.println("Agrego correctamente: "+sql);
+		   estatuto.close();
+		   conex.desconectar();
+		   
+	}catch (Exception e) {
+		JOptionPane.showMessageDialog(null, "no se pudo guardar el cliente\n"+e);
+		
+	}
+	
+}
 
 }

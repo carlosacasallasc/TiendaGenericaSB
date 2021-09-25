@@ -12,7 +12,7 @@
 <body>
 
 
-<form name="Clientes">
+<form action="Clientes.jsp" method="post" name="Clientes">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
   <div class="container-fluid">
@@ -57,31 +57,31 @@
     <fieldset style="width: fit-content;">
         <legend><strong>CLIENTES</strong></legend> <br>
         <label for="Cedula"><b>CEDULA:</b></label>
-        <input type="number" id="Cedula"  placeholder="cédula" name="name" required>
+        <input type="number" id="Cedula"  placeholder="cédula" name="Cedula" required>
         <br>
         <br>
         <label for="Nombre"><b>NOMBRE COMPLETO:</b></label>
-        <input type="text" id="Nombre"placeholder="nombre" name="name">
+        <input type="text" id="Nombre"placeholder="nombre" name="Nombre">
         <br>
         <br>
 
         <label for="Correo"><B>CORREO ELECTRONICO:</B></label>
-        <input type="email" id="Correo" placeholder="email" name="name">
+        <input type="email" id="Correo" placeholder="email" name="Correo">
         <br>
         <br>
     
         <label for="Telefono"><B>TELEFONO:</B></label>
-        <input type="text" id="Telefono" placeholder="telefono" name="name">
+        <input type="text" id="Telefono" placeholder="telefono" name="Telefono">
         <br>
         <br>
     
         <label for="Direccion"><b>DIRECCION:</b></label>
-        <input type="direccion" id="direccion" placeholder="direccion" name="name">
+        <input type="direccion" id="direccion" placeholder="direccion" name="direccion">
         <br>
         <br>
         <input type="submit" value="ENVIAR">
         <button type="button">CONSULTAR</button>
-        <button type="button">CREAR</button>
+        <button type="button" formaction="/Clientes.jsp">CREAR</button>
         <button type="button">ACTUALIZAR</button>
         <input type="reset" value="BORRAR">
         
