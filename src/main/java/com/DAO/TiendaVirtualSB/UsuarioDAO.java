@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import com.DTO.TiendaVirtualSB.ProductosDTO;
 /*import javax.swing.JOptionPane;*/
 /*import com.BO.TiendaVirtualSB.*;*/
 import com.DTO.TiendaVirtualSB.UsuariosDTO;
@@ -83,14 +85,6 @@ public void modificarPersona(UsuariosDTO persona)
  Conexion conex= new Conexion();
  try {
   Statement estatuto = conex.getConnection().createStatement();
-/*estatuto.executeUpdate(
-		"UPDATE usuarios"+
-		  "SET email_usuario = '"+persona.getEmailUsuario()+"',"+
-		   "nombre_usuario='"+persona.getNombreUsuario()+"' "+
-		   "password='"+persona.getPassword()+"' "+
-		   "usuario='"+persona.getUsuario()+"' "+
-		   "WHERE cedula_usuario=" + persona.getCedulaUsuario()*/
-
 		  
  estatuto.executeUpdate("UPDATE usuarios SET email_usuario = '"+persona.getEmailUsuario()+"', "+
 		   "nombre_usuario ='"+persona.getNombreUsuario()+"', "+
@@ -141,5 +135,98 @@ public ArrayList< UsuariosDTO> listaDePersonas() {
   }
   return miUsuario;
  }
+
+/*SECCION FORMULARIO USUARIOS*/
+
+public UsuariosDTO consultarUsuario(Long cedula) {
+		UsuariosDTO usuario= new UsuariosDTO();
+	  Conexion conex= new Conexion();
+	    
+	  try {
+	   PreparedStatement consulta = conex.getConnection().prepareStatement("SELECT * FROM usuarios where cedula_usuario = '"+ cedula +"' ");
+	   
+	   ResultSet res = consulta.executeQuery();
+	   
+	  if(res.next()){
+		 	  
+		  usuario.setCedulaUsuario(Long.parseLong(res.getString("cedula_usuario")));
+		  usuario.setEmailUsuario(res.getString("email_usuario")); 
+		  usuario.setNombreUsuario(res.getString("nombre_usuario"));
+		  usuario.setPassword(res.getString("password"));
+		  usuario.setUsuario(res.getString("usuario"));
+		  
+		  
+	          }
+	          res.close();
+	          consulta.close();
+	          conex.desconectar();
+	   
+	  } catch (SQLException e) {
+		  System.out.println("Error al consultar en BBDD " + e.getMessage());
+	   
+	  }
+	  return usuario;
+	  
+	 }
+
+public void crearUsuario(UsuariosDTO usuario) {
+	Conexion conex= new Conexion();
+	  try {
+	   Statement estatuto = conex.getConnection().createStatement();
+	   estatuto.executeUpdate("INSERT INTO usuarios VALUES ('"+usuario.getCedulaUsuario()+"', '"
+	     +usuario.getEmailUsuario()+"', '"+usuario.getNombreUsuario()+"','"+usuario.getPassword()+"','"+usuario.getUsuario()+"' )");
+	    estatuto.close();
+	   conex.desconectar();
+	   
+	  } catch (SQLException e) {
+	            System.out.println(e.getMessage());
+	   
+	  }
+  
+ }
+
+
+public void actualizarUsuario(UsuariosDTO usuario) {
+	Conexion conex= new Conexion();
+	 try {
+	  Statement estatuto = conex.getConnection().createStatement();
+	  
+	  String query = "UPDATE usuarios SET email_usuario = '"+usuario.getEmailUsuario()+"', "+
+			   "nombre_usuario ='"+usuario.getNombreUsuario()+"', "+
+			   "password ='"+usuario.getPassword()+"', "+
+			   "usuario ='"+usuario.getUsuario()+"' "+
+			   "WHERE cedula_usuario= " + usuario.getCedulaUsuario();
+			   System.out.println(query); 
+	 estatuto.executeUpdate(query);
+	  
+	 estatuto.close();
+	 conex.desconectar();
+	  
+	 } catch (SQLException e) {
+	           System.out.println(e.getMessage());
+	 }
+	
+}
+
+public void borrarUsuario(Long cedula) {
+	Conexion conex= new Conexion();
+	 try {
+	  Statement estatuto = conex.getConnection().createStatement();
+	  
+	  String query = "DELETE FROM usuarios WHERE  cedula_usuario = '"+ cedula +"'";
+			   
+			   System.out.println(query); 
+	 estatuto.executeUpdate(query);
+	  
+	 estatuto.close();
+	 conex.desconectar();
+	  
+	 } catch (SQLException e) {
+	           System.out.println(e.getMessage());
+	 }
+	
+}
+	
+	
 
 }

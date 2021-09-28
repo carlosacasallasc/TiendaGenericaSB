@@ -26,7 +26,7 @@ public class LoginDAO {
 		String nombreUsuario = usuario.getNombreUsuario();
 		String contraseña = usuario.getPassword();
 		
-		String sql = "SELECT nombre_usuario, password  FROM usuarios WHERE nombre_usuario = '"+ nombreUsuario +"' AND password ='"+ contraseña +"' ";
+		String sql = "SELECT nombre_usuario, password  FROM usuarios WHERE usuario = '"+ nombreUsuario +"' AND password ='"+ contraseña +"' ";
 		
 		try {
 			connection = conn.getConnection();
@@ -47,8 +47,10 @@ public class LoginDAO {
 				
 			
 		}catch (SQLException ex) {
-			return 0;
+			System.out.println("Error en BBDD: " + ex.getMessage());
 		}
+		
+		return rta;
 	}
 	
 

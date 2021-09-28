@@ -19,10 +19,46 @@
         font-family: Arial
     }
    </style>
+   
+   <script type="text/javascript">
+   function hideFields() {
+       /*Acceso a los campos*/
+	   nombreInput = document.getElementById("Nombre");
+       correoInput = document.getElementById("Correo");
+       usuarioInput = document.getElementById("Usuario");
+       contrasenaInput = document.getElementById("Contraseña");
+       
+       /*Acceso a los checkBox*/
+       checkCrear = document.getElementById("crear");
+       checkConsultar = document.getElementById("consultar");
+       checkActualizar = document.getElementById("actualizar");
+       checkBorrar = document.getElementById("borrar");
+       
+       /*Validación de los checkbox seleccionados*/
+       if (checkCrear.checked || checkActualizar.checked) {
+           nombreInput.disabled = false;
+           correoInput.disabled = false;
+           usuarioInput.disabled = false;
+           contrasenaInput.disabled = false;
+       }
+       
+       if(checkBorrar.checked || checkConsultar.checked) {
+    	   nombreInput.disabled = true;
+           correoInput.disabled = true;
+           usuarioInput.disabled = true;
+           contrasenaInput.disabled = true;
+       }
+       
+   }
+   </script>
+   
+   
+   
+   
 </head>
 
 <body>
-<form name="Usuarios">
+<form name="Usuarios" action="Usuarios.jsp" >
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
   <div class="container-fluid">
@@ -56,7 +92,7 @@
           </ul>
         </li>
         <li>
-        	<a href="Login.html" class="btn btn-info btn-lg">
+        	<a href="Login.html" class="btn btn-info btn-light">
           	<span class="glyphicon glyphicon-log-out"></span> Log out
         </a>
         </li>
@@ -71,33 +107,48 @@
         <legend><strong>USUARIOS</strong></legend> <br>
   
         <label for="Cedula"><b>CEDULA:</b></label>
-        <input type="number" id="Cedula"  placeholder="cédula" name="name" required>
+        <input type="number" id="Cedula"  placeholder="cédula" name="Cedula" required>
         <br>
         <br>
         <label for="Nombre"><b>NOMBRE COMPLETO:</b></label>
-        <input type="text" id="Nombre"placeholder="nombre" name="name">
+        <input type="text" id="Nombre" placeholder="nombre" name="Nombre" disabled>
         <br>
         <br>
 
         <label for="Correo"><B>CORREO ELECTRONICO:</B></label>
-        <input type="email" id="Correo" placeholder="email" name="name">
+        <input type="email" id="Correo" placeholder="email" name="Correo" disabled>
         <br>
         <br>
     
         <label for="Usuario"><B>USUARIO:</B></label>
-        <input type="text" id="Usuario" placeholder="usuario" name="name">
+        <input type="text" id="Usuario" placeholder="usuario" name="Usuario" disabled>
         <br>
         <br>
     
         <label for="Contraseña"><b>CONTRASEÑA:</b></label>
-        <input type="password" id="Contraseña" placeholder="contraseña" name="name">
+        <input type="password" id="Contraseña" placeholder="contraseña" name="Contraseña" disabled>
         <br>
         <br>
-        <input type="submit" value="ENVIAR">
-        <button type="button">CONSULTAR</button>
-        <button type="button">CREAR</button>
-        <button type="button">ACTUALIZAR</button>
-        <input type="reset" value="BORRAR">
+        
+        <div id="botonesUsuario">
+        	<input type="radio" id="consultar" name="usuario" value="1" onchange="javascript:hideFields()"/>
+	        <label for="consultar">CONSULTAR</label>
+        
+	        <input type="radio" id="crear" name="usuario" value="2" onchange="javascript:hideFields()"/>
+	        <label for="crear">CREAR</label>
+        
+	        <input type="radio" id="actualizar" name="usuario" value="3" onchange="javascript:hideFields()"/>
+	        <label for="actualizar">ACTUALIZAR</label>
+        
+        	<input type="radio" id="borrar" name="usuario" value="4" onchange="javascript:hideFields()"/>
+        	<label for="borrar">BORRAR</label>
+        	<br>
+        	<br>
+        	<div align="center">
+        		<input type="submit"/>
+        		<input type="reset" value="Borrar Formulario">
+        	</div>
+        </div>
         
     </fieldset>
 

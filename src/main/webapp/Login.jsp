@@ -9,13 +9,13 @@
     %>
 <!DOCTYPE html>
 <html lang="es">
+<meta charset="ISO-8859-1">
 
 
 
 <%
 	String mensaje = "";
 	String url = "MenuPrincipal.html";
-	String urlLogin = "Login.html";
 	UsuarioController uc = new UsuarioController();
 	UsuariosDTO log = new UsuariosDTO();
 	String usuario = request.getParameter("user");

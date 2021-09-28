@@ -3,17 +3,14 @@
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" charset="ISO-8859-1">
 <title>Gestión Productos</title>
 
-<link rel="stylesheet" href="Estilos.css">
 </head>
-<body>
-
-
-<form>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
+   
+    <body>
+    
+ <nav class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
   <div class="container-fluid">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="navbar-item">
@@ -44,31 +41,48 @@
           </ul>
         </li>
         <li>
-        	<a href="Login.html" class="btn btn-info btn-lg">
+        	<a href="Login.html" class="btn btn-info btn-lg btn-light">
           	<span class="glyphicon glyphicon-log-out"></span> Log out
         </a>
         </li>
       </ul>
   </div>
 </nav>
+    
+        <p>Nombre del Archivo .csv</p>
+        
+        <div>
+        	<input id="csv" accept=".csv" type="file">
+        </div>
+        
+        <!--  <output id="out">
+        	
+        </output> -->
+        
+        <br>
+        <br>
+        
+        <div>
+        	<input type="button" value="Cargar" id="btnCargar" name="btnCargar"/>
+        </div>
+        
+        <script>
+        
+            var fileInput = document.getElementById("csv"),
+            readFile = function () {
+            var reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('out').innerHTML = reader.result;
+            };
+            // start reading the file. When it is done, calls the onload event defined above.
+            reader.readAsBinaryString(fileInput.files[0]);
+            
+        };
 
-	<table>
-	<legend><strong>PRODUCTOS</strong></legend> <br>
-		<tr>
-			<td>
-				<p><b><label for="fname">NOMBRE</label></b></p>
-			</td>
-			<td>
-				<input class="boton_personalizadoPro" type="file" style="width:350px" id="myFile" name="filename">
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input 	class="boton_personalizadoPro" type="submit">
-			</td>
-		</tr>
-	</table>
-</form>
-
-</body>
+        fileInput.addEventListener('change', readFile);
+    </script>
+    
+    
+    
+    </body>
 </html>

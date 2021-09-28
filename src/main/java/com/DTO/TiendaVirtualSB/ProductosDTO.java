@@ -2,23 +2,38 @@ package com.DTO.TiendaVirtualSB;
 
 public class ProductosDTO {
 	
-	private Number IvaCompra;
+	private Integer IvaCompra;
 	private Long nitProveedor;
 	private String nombreProducto;
-	private Number precioCompra;
-	private Number precioVenta;
-	
+	private Integer precioCompra;
+	private Integer precioVenta;
 	private Long codigoProducto;
+	
+	public ProductosDTO(Integer ivaCompra, Long nitProveedor, String nombreProducto, Integer precioCompra,
+			Integer precioVenta, Long codigoProducto) {
+		super();
+		IvaCompra = ivaCompra;
+		this.nitProveedor = nitProveedor;
+		this.nombreProducto = nombreProducto;
+		this.precioCompra = precioCompra;
+		this.precioVenta = precioVenta;
+		this.codigoProducto = codigoProducto;
+	}
+	
+	public ProductosDTO() {
+		
+	}
+	
 	public Long getCodigoProducto() {
 		return codigoProducto;
 	}
 	public void setCodigoProducto(Long codigoProducto) {
 		this.codigoProducto = codigoProducto;
 	}
-	public Number getIvaCompra() {
+	public Integer getIvaCompra() {
 		return IvaCompra;
 	}
-	public void setIvaCompra(Number ivaCompra) {
+	public void setIvaCompra(Integer ivaCompra) {
 		IvaCompra = ivaCompra;
 	}
 	public Long getNitProveedor() {
@@ -33,16 +48,16 @@ public class ProductosDTO {
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
 	}
-	public Number getPrecioCompra() {
+	public Integer getPrecioCompra() {
 		return precioCompra;
 	}
-	public void setPrecioCompra(Number precioCompra) {
+	public void setPrecioCompra(Integer precioCompra) {
 		this.precioCompra = precioCompra;
 	}
-	public Number getPrecioVenta() {
+	public Integer getPrecioVenta() {
 		return precioVenta;
 	}
-	public void setPrecioVenta(Number precioVenta) {
+	public void setPrecioVenta(Integer precioVenta) {
 		this.precioVenta = precioVenta;
 	}
 	
