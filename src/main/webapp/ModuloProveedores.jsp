@@ -15,51 +15,52 @@
 <%
 	
 	UsuarioController uc = new UsuarioController();
-	UsuariosDTO objUsuario = new UsuariosDTO();
-	UsuariosDTO rta = new UsuariosDTO();
+	ProveedoresDTO objProveedor = new ProveedoresDTO();
+	ProveedoresDTO rta = new ProveedoresDTO();
 	
-	long cedulaLong = Long.parseLong(request.getParameter("Cedula"));
+	long nitLong = Long.parseLong(request.getParameter("Nit"));
 	
-	objUsuario.setCedulaUsuario(cedulaLong);	
-	objUsuario.setNombreUsuario(request.getParameter("Nombre"));
-	objUsuario.setEmailUsuario(request.getParameter("Correo"));
-	objUsuario.setUsuario(request.getParameter("Usuario"));
-	objUsuario.setPassword(request.getParameter("Contraseña"));	
+	objProveedor.setNitProveedor(nitLong);	
+	objProveedor.setNombreProveedor(request.getParameter("Nombre"));
+	objProveedor.setDireccionProveedor(request.getParameter("Direccion"));
+	objProveedor.setTelefonoProveedor(request.getParameter("Telefono"));
+	objProveedor.setCiudadProveedor(request.getParameter("Ciudad"));	
 
 	/*Variable par almacenar la opción seleccionada en el formulario*/
-	String opcion = request.getParameter("usuario");
+	String opcion = request.getParameter("proveedor");
 	
 	
 	if(Integer.parseInt(opcion) == 1){
 		
-		rta = uc.consultarUsuario(cedulaLong);
-		if(rta.getCedulaUsuario() == null){
+		rta = uc.consultarProveedor(nitLong);
+				
+		if(rta.getNitProveedor() == null){
 			%>
 			<script type="text/javascript">
-		    	alert('El usuario consultado no existe');
-		    	window.location.href = "Usuarios.html";
+		    	alert('El proveedor consultado no existe');
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%		
 		}
 	} 
 	
 	if(Integer.parseInt(opcion) == 2){
-		rta = uc.consultarUsuario(cedulaLong);
+		rta = uc.consultarProveedor(nitLong);
 		
-		if(rta.getCedulaUsuario() == null){
-			uc.crearUsuario(objUsuario);
+		if(rta.getNitProveedor() == null){
+			uc.registrarProveedor(objProveedor);
 			%>
 				<script type="text/javascript">
-			    	alert('Usuario Creado');
-			    	window.location.href = "Usuarios.html";
+			    	alert('Proveedor Creado');
+			    	window.location.href = "ModuloProveedores.html";
 				</script>
 			<%	
 		}else {
 		
 		%>
 			<script type="text/javascript">
-		    	alert('El usuario que intenta crear ya existe');
-		    	window.location.href = "Usuarios.html";
+		    	alert('El proveedor que intenta crear ya existe');
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%		
 	}
@@ -67,21 +68,21 @@
 	
 	if(Integer.parseInt(opcion) == 3){
 		
-		rta = uc.consultarUsuario(cedulaLong);
+		rta = uc.consultarProveedor(nitLong);
 		
-		if(rta.getCedulaUsuario() == null){
+		if(rta.getNitProveedor() == null){
 			%>
 			<script type="text/javascript">
 		    	alert('El usuario que intenta actualizar no existe');
-		    	window.location.href = "Usuarios.html";
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%
 		}else {
-			uc.actualizarUsuario(objUsuario);
+			uc.modificarProveedor(objProveedor);
 			%>
 			<script type="text/javascript">
-		    	alert('Datos del Usuario Actualizados');
-		    	window.location.href = "Usuarios.html";
+		    	alert('Datos del Proveedor Actualizados');
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%			
 		}
@@ -91,21 +92,21 @@
 	
 	if(Integer.parseInt(opcion) == 4){
 		
-		rta = uc.consultarUsuario(cedulaLong);
+		rta = uc.consultarProveedor(nitLong);
 		
-		if(rta.getCedulaUsuario() == null){
+		if(rta.getNitProveedor() == null){
 			%>
 			<script type="text/javascript">
-		    	alert('Cédula errada');
-		    	window.location.href = "Usuarios.html";
+		    	alert('Nit errado');
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%
 		}else {
-			uc.borrarUsuario(cedulaLong);
+			uc.eliminarProveedor(nitLong);
 			%>
 			<script type="text/javascript">
-		    	alert('Datos del Usuario Borrados');
-		    	window.location.href = "Usuarios.html";
+		    	alert('Datos del Proveedor Borrados');
+		    	window.location.href = "ModuloProveedores.html";
 			</script>
 		<%			
 		}
@@ -168,22 +169,22 @@
 <body>
 	
 	<div class="tabla">
-		<strong>Resultado Usuario Consultado</strong><br>
+		<strong>Resultado Proveedor Consultado</strong><br>
 		<div class="divTable">
 		<div class="divTableBody">
 		<div class="divTableRow">
-			<div class="divTableCell">Cedula</div>
-			<div class="divTableCell">Nombre Completo</div>
-			<div class="divTableCell">Correo Electronico</div>
-			<div class="divTableCell">Usuario</div>
-			<div class="divTableCell">Contraseña</div>
+			<div class="divTableCell">Nit Proveedor</div>
+			<div class="divTableCell">Nombre Proveedor</div>
+			<div class="divTableCell">Dirección</div>
+			<div class="divTableCell">Telefono</div>
+			<div class="divTableCell">Ciudad</div>
 		</div>
 		<div class="divTableRow">
-			<div class="divTableCell"><%= rta.getCedulaUsuario()  %></div>
-			<div class="divTableCell"><%= rta.getNombreUsuario()  %></div>
-			<div class="divTableCell"><%= rta.getEmailUsuario()  %></div>
-			<div class="divTableCell"><%= rta.getUsuario()  %></div>
-			<div class="divTableCell"><%= rta.getPassword() %></div>
+			<div class="divTableCell"><%= rta.getNitProveedor() %></div>
+			<div class="divTableCell"><%= rta.getNombreProveedor()  %></div>
+			<div class="divTableCell"><%= rta.getDireccionProveedor()  %></div>
+			<div class="divTableCell"><%= rta.getTelefonoProveedor()  %></div>
+			<div class="divTableCell"><%= rta.getCiudadProveedor() %></div>
 		</div>
 		<br>
 		<br>

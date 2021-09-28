@@ -8,10 +8,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedores</title>
+    
+    <style>
+    label {
+        color: rgb(38, 17, 128);
+        font-family: Arial
+    }
+
+        legend {
+        color: rgb(12, 12, 12);
+        font-family: Arial
+    }
+   </style>
+   
+   <script type="text/javascript">
+   function hideFields() {
+       /*Acceso a los campos*/
+	   nombreInput = document.getElementById("Nombre");
+       direccionInput = document.getElementById("Direccion");
+       telefonoInput = document.getElementById("Telefono");
+       ciudadInput = document.getElementById("Ciudad");
+       
+       /*Acceso a los checkBox*/
+       checkCrear = document.getElementById("crear");
+       checkConsultar = document.getElementById("consultar");
+       checkActualizar = document.getElementById("actualizar");
+       checkBorrar = document.getElementById("borrar");
+       
+       /*Validación de los checkbox seleccionados*/
+       if (checkCrear.checked || checkActualizar.checked) {
+           nombreInput.disabled = false;
+           direccionInput.disabled = false;
+           telefonoInput.disabled = false;
+           ciudadInput.disabled = false;
+       }
+       
+       if(checkBorrar.checked || checkConsultar.checked) {
+    	   nombreInput.disabled = true;
+    	   direccionInput.disabled = true;
+    	   telefonoInput.disabled = true;
+    	   ciudadInput.disabled = true;
+       }
+       
+   }
+   </script>
 </head>
 
 <body>
-    <form name="Proveedores">
+    <form name="Proveedores" action="ModuloProveedores.jsp">
     
     <nav class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
   <div class="container-fluid">
@@ -56,32 +100,47 @@
             <legend><strong>PROVEEDORES</strong></legend> <br>
 
             <label for="Nit"><b>NIT:</b></label>
-            <input type="number" id="Nit" placeholder="nit" name="name" required>
+            <input type="number" id="Nit" placeholder="nit" name="Nit" required>
             <br>
             <br>
             <label for="Nombre"><b>NOMBRE PROVEEDOR:</b></label>
-            <input type="text" id="Nombre" placeholder="razon social" name="name">
+            <input type="text" id="Nombre" placeholder="razon social" name="Nombre" disabled>
             <br>
             <br>
 
             <label for="Direccion"><B>DIRECCION:</B></label>
-            <input type="text" id="Direccion" placeholder="direccion" name="name">
+            <input type="text" id="Direccion" placeholder="direccion" name="Direccion" disabled>
             <br>
             <br>
 
             <label for="Telefono"><B>TELEFONO:</B></label>
-            <input type="number" id="Telefono" placeholder="teléfono" name="name">
+            <input type="number" id="Telefono" placeholder="teléfono" name="Telefono" disabled>
             <br>
             <br>
 
             <label for="Ciudad"><b>CIUDAD:</b></label>
-            <input type="text" id="Ciudad" placeholder="ciudad" name="name">
+            <input type="text" id="Ciudad" placeholder="ciudad" name="Ciudad" disabled>
             <br>
             <br>
-            <input type="submit" value="CREAR">
-            <input type="submit" formaction="/BuscarUsuario.jsp" value="BUSCAR">
-            <input type="submit" formaction="/ActualizarUsuario.jsp" value="ACTUALIZAR">
-            <input type="submit" formaction="/EliminarUsuario.jsp" value="BORRAR">
+            <div id="botonesUsuario">
+        	<input type="radio" id="consultar" name="proveedor" value="1" onchange="javascript:hideFields()"/>
+	        <label for="consultar">CONSULTAR</label>
+        
+	        <input type="radio" id="crear" name="proveedor" value="2" onchange="javascript:hideFields()"/>
+	        <label for="crear">CREAR</label>
+        
+	        <input type="radio" id="actualizar" name="proveedor" value="3" onchange="javascript:hideFields()"/>
+	        <label for="actualizar">ACTUALIZAR</label>
+        
+        	<input type="radio" id="borrar" name="proveedor" value="4" onchange="javascript:hideFields()"/>
+        	<label for="borrar">BORRAR</label>
+        	<br>
+        	<br>
+        	<div align="center">
+        		<input type="submit"/>
+        		<input type="reset" value="Borrar Formulario">
+        	</div>
+        </div>
 
         </fieldset>
 

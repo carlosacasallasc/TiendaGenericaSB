@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.DTO.TiendaVirtualSB.ProductosDTO;
 /*import javax.swing.JOptionPane;*/
 /*import com.BO.TiendaVirtualSB.*;*/
 import com.DTO.TiendaVirtualSB.UsuariosDTO;
@@ -20,36 +19,8 @@ import com.DTO.TiendaVirtualSB.UsuariosDTO;
 public class UsuarioDAO 
 {
 
- /**
-  * Permite registrar un Usuario nuevo
-  * @param persona
-  */
-	
-	
- public void registrarPersona(UsuariosDTO persona) 
- {
-  Conexion conex= new Conexion();
-  try {
-   Statement estatuto = conex.getConnection().createStatement();
-   estatuto.executeUpdate("INSERT INTO usuarios VALUES ('"+persona.getCedulaUsuario()+"', '"
-     +persona.getEmailUsuario()+"', '"+persona.getNombreUsuario()+"','"+persona.getPassword()+"','"+persona.getUsuario()+"' )");
-    estatuto.close();
-   conex.desconectar();
-   
-  } catch (SQLException e) {
-            System.out.println(e.getMessage());
-   
-  }
- }
-   
  
- 
-/**
- * permite consultar el Usuario asociado al documento enviado
- * como parametro 
- * @param documento 
- * @return
- */
+	/*METODOS EJEMPLO*/  
 public ArrayList<UsuariosDTO> consultarPersona(int documento) {
   ArrayList< UsuariosDTO> miUsuario = new ArrayList< UsuariosDTO>();
   Conexion conex= new Conexion();
@@ -79,34 +50,8 @@ public ArrayList<UsuariosDTO> consultarPersona(int documento) {
   return miUsuario;
  }
 
-
-public void modificarPersona(UsuariosDTO persona) 
-{
- Conexion conex= new Conexion();
- try {
-  Statement estatuto = conex.getConnection().createStatement();
-		  
- estatuto.executeUpdate("UPDATE usuarios SET email_usuario = '"+persona.getEmailUsuario()+"', "+
-		   "nombre_usuario ='"+persona.getNombreUsuario()+"', "+
-		   "password ='"+persona.getPassword()+"', "+
-		   "usuario ='"+persona.getUsuario()+"', "+
-		   "WHERE cedula_usuario=" + persona.getCedulaUsuario()
-		  
-	);
-  
- estatuto.close();
- conex.desconectar();
-  
- } catch (SQLException e) {
-           System.out.println(e.getMessage());
-  
- }
-}
-/**
- * permite consultar la lista de Usuarios
- * @return
- */
 public ArrayList< UsuariosDTO> listaDePersonas() {
+
   ArrayList< UsuariosDTO> miUsuario = new ArrayList< UsuariosDTO>();
   Conexion conex= new Conexion();
     
@@ -135,6 +80,7 @@ public ArrayList< UsuariosDTO> listaDePersonas() {
   }
   return miUsuario;
  }
+
 
 /*SECCION FORMULARIO USUARIOS*/
 
@@ -185,7 +131,6 @@ public void crearUsuario(UsuariosDTO usuario) {
   
  }
 
-
 public void actualizarUsuario(UsuariosDTO usuario) {
 	Conexion conex= new Conexion();
 	 try {
@@ -196,7 +141,7 @@ public void actualizarUsuario(UsuariosDTO usuario) {
 			   "password ='"+usuario.getPassword()+"', "+
 			   "usuario ='"+usuario.getUsuario()+"' "+
 			   "WHERE cedula_usuario= " + usuario.getCedulaUsuario();
-			   System.out.println(query); 
+			    
 	 estatuto.executeUpdate(query);
 	  
 	 estatuto.close();
@@ -215,7 +160,6 @@ public void borrarUsuario(Long cedula) {
 	  
 	  String query = "DELETE FROM usuarios WHERE  cedula_usuario = '"+ cedula +"'";
 			   
-			   System.out.println(query); 
 	 estatuto.executeUpdate(query);
 	  
 	 estatuto.close();
