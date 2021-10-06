@@ -117,15 +117,23 @@ public class UsuarioController extends HttpServlet {
 	
 	/* METODOS REPORTES*/
 	
-	/**
-	 * permite consultar la LISTA de USUARIOS
-	 * @return
-	 */
+
 	@RequestMapping("/listarUsuarios")
 	public ArrayList<UsuariosDTO> listarUsuarios() {
 		ReporteDAO Dao=new ReporteDAO(); 
 		return Dao.listarUsuarios();		
 	}
 	
-
+	@RequestMapping("/listarClientes")
+	public ArrayList<ClienteDTO> listarClientes() {
+		ReporteDAO Dao=new ReporteDAO(); 
+		return Dao.listarClientes();		
+	}
+	
+	@RequestMapping("/listarVentas")
+	public ArrayList<VentasDTO> listarVentas() {
+		ReporteDAO Dao=new ReporteDAO(); 
+		return Dao.listarVentas();		
+	}
+		
 }

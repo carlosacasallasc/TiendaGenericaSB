@@ -25,13 +25,13 @@
           var tr = document.createElement("tr");
           
           var columna1 = document.createElement("th")
-          columna1.innerHTML = item.cedulaUsuario; /*parámetro Cliente DTO*/
+          columna1.innerHTML = item.cedula_Usuario; /*parámetro Cliente DTO*/
           
           var columna2 = document.createElement("th")
-          columna2.innerHTML = item.email;
+          columna2.innerHTML = item.nombre_usuario;
           
           var columna3 = document.createElement("th")
-          columna3.innerHTML = item.nombreUsuario;
+          columna3.innerHTML = item.email_usuario;
           
           var columna4 = document.createElement("th")
           columna4.innerHTML = item.password;
@@ -72,8 +72,8 @@ background-color: rgb(217, 215, 228);;
 <thead>
   <tr>
     <th>CEDULA</th>
-    <th>EMAIL</th>
     <th>NOMBRE</th>
+    <th>CORREO ELECTRONICO</th>
     <th>PASSWORD</th>
     <th>USUARIO</th>
 
