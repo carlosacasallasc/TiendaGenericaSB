@@ -9,15 +9,15 @@ public class ProductosDTO {
 	private Integer precioVenta;
 	private Long codigoProducto;
 	
-	public ProductosDTO(Integer ivaCompra, Long nitProveedor, String nombreProducto, Integer precioCompra,
-			Integer precioVenta, Long codigoProducto) {
+	public ProductosDTO(String nombreProducto, Long nitProveedor, Integer precioCompra, Integer ivaCompra,   
+			Integer precioVenta) {
 		super();
 		IvaCompra = ivaCompra;
 		this.nitProveedor = nitProveedor;
 		this.nombreProducto = nombreProducto;
 		this.precioCompra = precioCompra;
 		this.precioVenta = precioVenta;
-		this.codigoProducto = codigoProducto;
+		
 	}
 	
 	public ProductosDTO() {

@@ -50,6 +50,7 @@ public class UsuarioController extends HttpServlet {
 
 	
 	
+	
 	/* METODOS CLIENTES */
 
 	@RequestMapping("/consultarCliente")
@@ -109,9 +110,22 @@ public class UsuarioController extends HttpServlet {
 	/* METODOS PRODUCTOS */
 
 	@RequestMapping("/cargarProductos")
-	public ArrayList<ProductosDTO> cargarProductos(String miArchivo) {
+	public void cargarProductos() {
 		ProductosDAO Dao = new ProductosDAO();
-		return Dao.insertarProductos(miArchivo);
+		Dao.insertarProductos();
 	}
+	
+	/* METODOS REPORTES*/
+	
+	/**
+	 * permite consultar la LISTA de USUARIOS
+	 * @return
+	 */
+	@RequestMapping("/listarUsuarios")
+	public ArrayList<UsuariosDTO> listarUsuarios() {
+		ReporteDAO Dao=new ReporteDAO(); 
+		return Dao.listarUsuarios();		
+	}
+	
 
 }

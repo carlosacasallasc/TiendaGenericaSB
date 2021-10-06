@@ -13,49 +13,93 @@ import com.DTO.TiendaVirtualSB.*;
 
 
 
+
 public class ProductosDAO {
 
 	private Connection connection;
 	private Conexion conn;
 	private PreparedStatement ps;
 	
-	public ArrayList<ProductosDTO> leerArchivoProductos(String miArchivo){
-		ArrayList<ProductosDTO> lstProductos = new ArrayList<ProductosDTO>();
+	public ArrayList<ProductosDTO> importarCSV(){
+		ArrayList<ProductosDTO> productos = new ArrayList<ProductosDTO>();
 
-		
-		
-		return lstProductos;
-	}
-	
-	
-	public ArrayList<ProductosDTO> insertarProductos(String miArchivo){
-		
-		ArrayList<ProductosDTO> lstProductos = new ArrayList<ProductosDTO>();
-		lstProductos = leerArchivoProductos(miArchivo);
-		System.out.println("Se van a insertar: "+ lstProductos.size() + " registros\n");
-		
-		conn = new Conexion();
-		connection = conn.getConnection();
-		
-		String query = "INSERT INTO productos(codigo_producto, iva_compra, nit_proveedor,nombre_producto,precio_compra,precio_venta) VALUES(?,?,?,?,?,?)";
-		
 		try {
-			ps = (PreparedStatement) connection.prepareStatement(query);
+			String ruta = "D:\\Ksallas\\Universidad El Bosque\\GitTiendaGenerica\\TiendaVirtualSB\\src\\Plantilla_Productos.csv";
+			CsvReader leerProductos = new CsvReader(ruta);
+
+			leerProductos.readHeaders();
 			
-			for(int i = 0; i < lstProductos.size(); i++) {
-				ps.setLong(1, lstProductos.get(i).getCodigoProducto());
-				ps.setString(2, lstProductos.get(i).getNombreProducto());
-				ps.setLong(1, lstProductos.get(i).getNitProveedor());
-				ps.setInt(1, lstProductos.get(i).getPrecioCompra());
-				ps.setInt(1, lstProductos.get(i).getIvaCompra());
-				ps.setInt(1, lstProductos.get(i).getPrecioVenta());
+			while(leerProductos.readRecord()) {
+				String nombre_producto = leerProductos.get(0);
+				Long NitProveedor = Long.parseLong(leerProductos.get(1));
+				Integer precio_compra = Integer.parseInt(leerProductos.get(2));
+				Integer Ivacompra = Integer.parseInt(leerProductos.get(3));
+				Integer precio_venta  = Integer.parseInt(leerProductos.get(4));
+				
+				productos.add(new ProductosDTO(nombre_producto, NitProveedor, precio_compra, Ivacompra, precio_venta));
+				System.out.println(productos);
 			}
 			
-		}catch(SQLException ex) {
+			leerProductos.close();
+			
+			System.out.println("Lista de Productos del .csv\n");
+			for(ProductosDTO producto: productos) {
+				System.out.println(
+						producto.getNombreProducto()+", "+
+						producto.getNitProveedor()+", "+
+						producto.getPrecioCompra()+", "+
+						producto.getIvaCompra()+", "+
+						producto.getPrecioVenta()
+						);
+			}
+			
+		}catch(FileNotFoundException ex) {
+			ex.printStackTrace();
+		}catch(IOException ex) {
 			ex.printStackTrace();
 		}
 		
-		return lstProductos;
+		return productos;
+		
+	}
+	
+	
+	public void insertarProductos(){
+		
+		ArrayList<ProductosDTO> productos = new ArrayList<ProductosDTO>();
+		
+		productos = importarCSV();
+		System.out.println(productos);
+		conn = new Conexion();
+		connection = conn.getConnection();
+		
+		
+		
+		String query = "INSERT INTO productos(codigo_producto, nombre_producto, nit_proveedor, precio_compra, iva_compra, precio_venta) VALUES(?,?,?,?,?,?)";
+		
+		System.out.println(query);
+		try {
+			ps = (PreparedStatement) connection.prepareStatement(query); 
+			System.out.println("Bandera");
+			System.out.println(ps);
+			for(int i = 0; i < productos.size(); i++) {
+				ps.setLong(1, productos.get(i).getCodigoProducto());
+				ps.setString(2, productos.get(i).getNombreProducto());
+				ps.setLong(3, productos.get(i).getNitProveedor());
+				ps.setInt(4, productos.get(i).getPrecioCompra());
+				ps.setInt(5, productos.get(i).getIvaCompra());
+				ps.setInt(6, productos.get(i).getPrecioVenta());
+				System.out.println("Bandera 2");
+				System.out.println(ps);
+				ps.executeUpdate();
+			}
+			
+			
+			ps.close();
+			connection.close();
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}
 	}
 	
 	
