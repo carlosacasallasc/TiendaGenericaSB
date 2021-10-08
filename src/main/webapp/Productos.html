@@ -18,7 +18,7 @@
 
 <body>
 	<form name="Productos" action="Productos.jsp" method="post"
-		enctype="multipar/form-data">
+		enctype="multipart/form-data">
 		<nav
 			class="navbar navbar-expand-lg navbar-light bg-primary opacity-75">
 			<div class="container-fluid">
@@ -57,7 +57,7 @@
 		<p>Select local CSV File:</p>
 		<input id="csv" name="csv" accept=".csv" type="file">
 
-		<output id="out" name="out" for="csv"> </output>
+		
 		<script>
 			var fileInput = document.getElementById("csv"), readFile = function() {
 				var reader = new FileReader();
@@ -73,7 +73,8 @@
 		</script>
 
 		<div align="center">
-			<input type="submit" /> <input type="reset" value="Borrar Formulario">
+			<input type="submit"/> 
+			<input type="reset" value="Borrar Formulario">
 		</div>
 
 

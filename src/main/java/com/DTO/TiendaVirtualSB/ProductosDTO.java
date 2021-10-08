@@ -9,7 +9,7 @@ public class ProductosDTO {
 	private Integer precioVenta;
 	private Long codigoProducto;
 	
-	public ProductosDTO(String nombreProducto, Long nitProveedor, Integer precioCompra, Integer ivaCompra,   
+	public ProductosDTO(Long codigoProducto,String nombreProducto, Long nitProveedor, Integer precioCompra, Integer ivaCompra,   
 			Integer precioVenta) {
 		super();
 		IvaCompra = ivaCompra;
@@ -17,6 +17,7 @@ public class ProductosDTO {
 		this.nombreProducto = nombreProducto;
 		this.precioCompra = precioCompra;
 		this.precioVenta = precioVenta;
+		this.codigoProducto = codigoProducto;
 		
 	}
 	

@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.DAO.TiendaVirtualSB.*;
 import com.DTO.TiendaVirtualSB.*;
+
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 
 @RestController
+@MultipartConfig
 public class UsuarioController extends HttpServlet {
 
 	/* METODOS LOGIN */
@@ -110,9 +113,9 @@ public class UsuarioController extends HttpServlet {
 	/* METODOS PRODUCTOS */
 
 	@RequestMapping("/cargarProductos")
-	public void cargarProductos() {
+	public boolean cargarProductos() {
 		ProductosDAO Dao = new ProductosDAO();
-		Dao.insertarProductos();
+		return Dao.insertarProductos();
 	}
 	
 	/* METODOS REPORTES*/

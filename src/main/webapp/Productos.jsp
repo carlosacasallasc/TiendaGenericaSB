@@ -1,3 +1,4 @@
+<%@page import="javax.servlet.annotation.MultipartConfig"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     
@@ -17,18 +18,24 @@
 
 
 <% 
-
+	
 	UsuarioController uc =new UsuarioController(); 
-	uc.cargarProductos();
+	//boolean rst = uc.cargarProductos();
+	//Part part = request.getPart("csv");
+	//String header = part.getHeader("content-disposition");
+	//String fileName = header.substring(header.lastIndexOf("=") + 2, header.length() - 1);
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://" +request.getServerName()+":"+request.getServerPort()+path+"/" ;
+	
+	
+	
 
 %>
 
 
-<script type="text/javascript">
-</script>
+
 
 <div class="divTableRow">
-			<div class="divTableCell"></div>
-			
-		</div>
+	<div class="divTableCell"><%= basePath %></div>
+</div>
 
