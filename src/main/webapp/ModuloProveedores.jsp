@@ -14,7 +14,7 @@
 
 <%
 	
-	UsuarioController uc = new UsuarioController();
+	ProveedorController uc = new ProveedorController();
 	ProveedoresDTO objProveedor = new ProveedoresDTO();
 	ProveedoresDTO rta = new ProveedoresDTO();
 	

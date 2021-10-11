@@ -1,6 +1,5 @@
 package com.BO.TiendaVirtualSB;
 
-import java.util.ArrayList;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.DAO.TiendaVirtualSB.*;
@@ -51,92 +50,5 @@ public class UsuarioController extends HttpServlet {
 		Dao.borrarUsuario(cedula);
 	}
 
-	
-	
-	
-	/* METODOS CLIENTES */
-
-	@RequestMapping("/consultarCliente")
-	public ClienteDTO consultarCliente(Long cedula) {
-		ClienteDAO Dao = new ClienteDAO();
-		return Dao.consultarCliente(cedula);
-	}
-
-	@RequestMapping("/crearCliente")
-	public void crearCliente(ClienteDTO cliente) {
-		ClienteDAO Dao = new ClienteDAO();
-		Dao.crearCliente(cliente);
-	}
-
-	@RequestMapping("/modificarCliente")
-	public void modificarCliente(ClienteDTO cliente) {
-		ClienteDAO Dao = new ClienteDAO();
-		Dao.modificarCliente(cliente);
-	}
-
-	@RequestMapping("/eliminarCliente")
-	public void eliminarCliente(Long cedula) {
-		ClienteDAO Dao = new ClienteDAO();
-		Dao.eliminarCliente(cedula);
-	}
-
-	
-	
-	/* METODOS PROVEEDORES */
-	
-	@RequestMapping("/consultarProveedor")
-	public ProveedoresDTO consultarProveedor(Long nitProveedor) {
-		ProveedorDAO Dao = new ProveedorDAO();
-		return Dao.consultarProveedor(nitProveedor);
-	}
-	
-	@RequestMapping("/registrarProveedor")
-	public void registrarProveedor(ProveedoresDTO proveedor) {
-		ProveedorDAO Dao = new ProveedorDAO();
-		Dao.registrarProveedor(proveedor);
-	}
-
-	@RequestMapping("/modificarProveedor")
-	public void modificarProveedor(ProveedoresDTO proveedor) {
-		ProveedorDAO Dao = new ProveedorDAO();
-		Dao.modificarProveedor(proveedor);
-	}
-
-	@RequestMapping("/eliminarProveedor")
-	public void eliminarProveedor(Long nitProveedor) {
-		ProveedorDAO Dao = new ProveedorDAO();
-		Dao.eliminarProveedor(nitProveedor);
-	}
-	
-	
-
-	/* METODOS PRODUCTOS */
-
-	@RequestMapping("/cargarProductos")
-	public boolean cargarProductos() {
-		ProductosDAO Dao = new ProductosDAO();
-		return Dao.insertarProductos();
-	}
-	
-	/* METODOS REPORTES*/
-	
-
-	@RequestMapping("/listarUsuarios")
-	public ArrayList<UsuariosDTO> listarUsuarios() {
-		ReporteDAO Dao=new ReporteDAO(); 
-		return Dao.listarUsuarios();		
-	}
-	
-	@RequestMapping("/listarClientes")
-	public ArrayList<ClienteDTO> listarClientes() {
-		ReporteDAO Dao=new ReporteDAO(); 
-		return Dao.listarClientes();		
-	}
-	
-	@RequestMapping("/listarVentas")
-	public ArrayList<VentasDTO> listarVentas() {
-		ReporteDAO Dao=new ReporteDAO(); 
-		return Dao.listarVentas();		
-	}
 		
 }

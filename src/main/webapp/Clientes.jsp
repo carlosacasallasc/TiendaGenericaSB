@@ -12,7 +12,7 @@
 
 
 <%
-UsuarioController uc = new UsuarioController();
+ClienteController uc = new ClienteController();
 ClienteDTO objCliente = new ClienteDTO();
 ClienteDTO rta = new ClienteDTO();
 

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.servlet.annotation.MultipartConfig;
@@ -101,6 +102,28 @@ public class ProductosDAO {
 		}
 		
 		return rst;
+	}
+	
+	
+	public void eliminarProductos() {
+		
+		Conexion conex = new Conexion();
+		try {
+			Statement estatuto = conex.getConnection().createStatement();
+			
+			String query = "DELETE from productos";
+
+			estatuto.executeUpdate(query);
+			
+			estatuto.close();
+			conex.desconectar();
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	
