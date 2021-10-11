@@ -17,7 +17,7 @@
         
     var saveme =  $.ajax({
         type: "POST",
-        url: "http://localhost:8080/listarUsuarios", //nombre del archivo php que consultaremos.
+        url: "http://localhost:8080/ListUsuarios", //nombre del archivo php que consultaremos.
       
         success: function(data) {
           $.each(data, function(i, item) {
@@ -25,13 +25,13 @@
           var tr = document.createElement("tr");
           
           var columna1 = document.createElement("th")
-          columna1.innerHTML = item.cedula_Usuario; /*parámetro Cliente DTO*/
+          columna1.innerHTML = item.cedulaUsuario; /*parámetro Usuarios DTO*/
           
           var columna2 = document.createElement("th")
-          columna2.innerHTML = item.nombre_usuario;
+          columna2.innerHTML = item.nombreUsuario;
           
           var columna3 = document.createElement("th")
-          columna3.innerHTML = item.email_usuario;
+          columna3.innerHTML = item.emailUsuario;
           
           var columna4 = document.createElement("th")
           columna4.innerHTML = item.password;
